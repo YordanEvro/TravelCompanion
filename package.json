@@ -1,0 +1,21 @@
+{
+  "name": "travelcompanion",
+  "version": "1.0.0",
+  "description": "Travel Companion is an applicationd deisgned to display restrictions from Covid-19.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder"
+  },
+  "author": "",
+  "license": "ISC",
+
+  "devDependencies": {
+    "concurrently": "^6.0.1",
+    "nodemon": "^2.0.7"
+  }
+}

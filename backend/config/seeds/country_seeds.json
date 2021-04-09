@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Canada",
+        "isRestricted": true,
+        "restrictions": "Curfew until 9:30pm. Gyms and restaurants are closed."
+    },
+    {
+        "name": "USA",
+        "isRestricted": true,
+        "restrictions": "Curfew in certain states. Gyms and restaurants are only closed in certain states."
+    }
+]
