@@ -5,8 +5,13 @@
         "restrictions": "Curfew until 9:30pm. Gyms and restaurants are closed."
     },
     {
-        "name": "USA",
+        "name": "United States of America",
         "isRestricted": true,
         "restrictions": "Curfew in certain states. Gyms and restaurants are only closed in certain states."
+    },
+    {
+        "name": "France",
+        "isRestricted": true,
+        "restrictions": "No curfew in most parts of France. Markets and restaurants are open in most areas."
     }
 ]

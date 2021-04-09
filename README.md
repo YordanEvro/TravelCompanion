@@ -65,3 +65,10 @@ Open a new command-line and go to the `TravelCompanion` directory. To run both t
 ```bash
 npm run dev
 ````
+
+## Seeding the database
+For developers working on this application, seeding the data can be done using mongoimport from the mongo CLI. Open the `mongo` shell and execute the following commands. However instead of `data`, copy and paste the contents of `backend/config/seeds/country_seeds.json` as argument to the `insertMany()` function.
+```bash
+use TravelCompanion
+db.countries.insertMany( data )
+````
