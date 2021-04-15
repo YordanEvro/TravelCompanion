@@ -6,6 +6,10 @@ import {
   Geography
 } from "react-simple-maps";
 
+import Popover from '@material-ui/core/Popover';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+
 import { getAllCountries } from "../api/api";
 
 const geoUrl =
@@ -21,14 +25,47 @@ const rounded = num => {
   }
 };
 
+const useStyles = makeStyles((theme) => ({
+  typography: {
+    padding: theme.spacing(2),
+  },
+  table: {
+    minWidth: 650,
+  },
+}));
+
 
 const MapChart = ({ setTooltipContent }) => {
   
   const [countries, setCountries] = useState(new Array());
+  const classes = useStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [content, setPopoverContent] = useState("");
 
   getAllCountries().then(res => {
     setCountries(res.data.data);
   })
+  
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const setFullRestrictions = (country) => {
+    console.log('514country ', country);
+    if(country)
+      setPopoverContent(country.name);
+    else
+      setPopoverContent("No info");
+    
+  }
+
+  const open = Boolean(anchorEl);
+  const id = open ? 'simple-popover' : undefined;
+
 
   return (
     <>
@@ -54,6 +91,14 @@ const MapChart = ({ setTooltipContent }) => {
                   onMouseLeave={() => {
                     setTooltipContent("");
                   }}
+                  onClick={(event) => {
+                    const { NAME, POP_EST } = geo.properties;
+
+                    const clickedCountry = countries.filter(function(country) { return country.name == NAME})[0];
+
+                    setFullRestrictions(clickedCountry);
+                    handleClick(event);
+                  }}
                   style={{
                     default: {
                       fill: "#D6D6DA",
@@ -74,6 +119,24 @@ const MapChart = ({ setTooltipContent }) => {
           </Geographies>
         </ZoomableGroup>
       </ComposableMap>
+      <Popover
+        id={id}
+        open={open}
+        anchorEl={anchorEl}
+        anchorReference="anchorPosition"
+        anchorPosition={{top:100, left:100}}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'left',
+        }}
+      >
+        <Typography className={classes.typography} >{content}</Typography>
+      </Popover>
     </>
   );
 };
