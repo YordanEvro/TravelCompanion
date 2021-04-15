@@ -8,7 +8,8 @@ const Searchbar = (props) => {
     return (
         <div id = "searchBar">
         <SearchBar
-        onChange={(newValue) => setValues({ values: newValue })}
+        onChange={(newValue) => 
+            setValues({ values: newValue })}
         onRequestSearch={() => console.log('onRequestSearch')}
         style={{
             margin: '0 auto',
