@@ -13,3 +13,7 @@ html {
     vertical-align: middle;
   }
   
+  #searchBar{
+    width: 100%;
+    text-align:center;
+}
