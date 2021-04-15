@@ -15,7 +15,7 @@ function App() {
   const [content, setContent] = useState("");
   return (
     <div>
-      <Searchbar />
+      <Searchbar handleChange ={(e) => console.log(e.target.value)} />
       <SideBar />
       <MapChart setTooltipContent={setContent} />
       <ReactTooltip>{content}</ReactTooltip>

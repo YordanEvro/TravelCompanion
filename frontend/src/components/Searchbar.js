@@ -4,8 +4,10 @@ import React from 'react';
 const Searchbar = (props) => {
     return (
     <div id = "searchBar" >
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"/>
     <form>
-    <input type = 'search'
+    <input type = 'text'
     className = 'search'
     placeholder ="Search country, amenity"
     onChange = {props.handleChange}
@@ -14,7 +16,9 @@ const Searchbar = (props) => {
     <option value="country">Country</option>
     <option value="amenities">Amenity</option>
   </select>
-    <input type="submit" value= "search"/>
+  <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+        </button>
     </form>
     </div>
     )
