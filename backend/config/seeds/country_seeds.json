@@ -2,16 +2,100 @@
     {
         "name": "Canada",
         "isRestricted": true,
-        "restrictions": "Curfew until 9:30pm. Gyms and restaurants are closed."
+        "hasEntryRestrictions": true,
+        "Entry": "Upon arrival, mandatory 2 week quarantine in designated areas.",
+        "curfew": true,
+        "curfewInformation": "Curfew is active from 20:00 to 05:00",
+        "gymRestricted": true,
+        "gymInformation": "Gyms are closed in red zone areas",
+        "restaurantRestricted": true,
+        "restaurantInformation": "Restaurants are closed for dine-in in red zone areas. Open for takeout and delivery.",
+        "outdoorRestricted": true,
+        "outdoorInformation": "Maximum group of two people from different households. Six feet distance and masks mandatory" 
     },
     {
         "name": "United States of America",
+        "hasEntryRestrictions": true,
+        "Entry": "Upon arrival, quarantine for 7 days and get tested.",
         "isRestricted": true,
-        "restrictions": "Curfew in certain states. Gyms and restaurants are only closed in certain states."
+        "curfew": false,
+        "curfewInformation": "",
+        "gymRestricted": false,
+        "gymInformation": "",
+        "restaurantRestricted": false,
+        "restaurantInformation": "Most restaurants are open and allow indoor and outdoor dining.",
+        "outdoorRestricted": false,
+        "outdoorInformation": ""
     },
     {
         "name": "France",
         "isRestricted": true,
-        "restrictions": "No curfew in most parts of France. Markets and restaurants are open in most areas."
+        "hasEntryRestrictions": true,
+        "Entry": "Upon arrival, agree to a PCR test and quarantine in a designated hotel for 7 days.",
+        "curfew": true,  
+        "curfewInformation": "From 6AM till 7PM must stay within 10km of your home. Curfew in place from 7PM to 6AM.",
+        "gymRestricted": true,
+        "gymInformation": "Gyms are closed",
+        "restaurantRestricted": true,
+        "restaurantInformation": "Restaurants are closed for dine-in. Open for takeout and delivery.",
+        "outdoorRestricted": true,
+        "outdoorInformation": "Gatherings outside are permitted up to 6 adults. Masks are mandatory for the gatherings."
+    },
+    {
+        "name": "Germany",
+        "isRestricted": true,
+        "hasEntryRestrictions": true,
+        "Entry": "Prior to the flight, a PCR test must be taken and the result must be negative. If not fully vaccinated, self-quarantine for 7 days",
+        "curfew": true,
+        "curfewInformation": "Curfew starting at 9PM until 5AM.",
+        "gymRestricted": true,
+        "gymInformation": "Gyms are still closed, but could be opening soon.",
+        "restaurantRestricted": true,
+        "restaurantInformation": "Restaurants are closed for dine-in. Open for takeout and delivery.",
+        "outdoorRestricted": true,
+        "outdoorInformation": "Outdoor gatherings are permitted in small groups. Some non-contact sports are permitted."  
+    },
+    {
+        "name": "Italy",
+        "isRestricted": true,
+        "hasEntryRestrictions": true,
+        "Entry": "Depending on the country of arrival, a quarantine period ranging from 5 days to 14 days is required.",
+        "curfew": true,
+        "curfewInformation": "Curfew in place from 10PM until 5AM.",
+        "gymRestricted": true,
+        "gymInformation": "Gyms are closed in all areas.",
+        "restaurantRestricted": true,
+        "restaurantInformation": "Restaurants are closed for dine-in. Open for takeout and delivery.",
+        "outdoorRestricted": true,
+        "outdoorInformation": "Small outdoor gatherings are permitted. Masks are mandatory for outdoor gatherings."
+    },
+    {
+        "name": "Japan",
+        "isRestricted": true,
+        "hasEntryRestrictions": true,
+        "Entry": "Upon arrival, mandatory 2 week quarantine in designated areas and must agree to PCR test.",
+        "curfew": true,
+        "curfewInformation": "Curfew in place from 8PM until 5AM",
+        "gymRestricted": true,
+        "gymInformation": "Gyms are closed in all areas",
+        "restaurantRestricted": true,
+        "restaurantInformation": "Restaurants and bars are open, but most close at 8PM",
+        "outdoorRestricted": true,
+        "outdoorInformation": "Outdoor gatherings are permitted with masks."
+    },
+    {
+        "name": "United Kingdom",
+        "isRestricted": true,
+        "hasEntryRestrictions": true,
+        "Entry": "Upon arrival, mandatory 2 week quarantine in designated areas.",
+        "curfew": false,
+        "curfewInformation": "",
+        "gymRestricted": false,
+        "gymInformation": "",
+        "restaurantRestricted": true,
+        "restaurantInformation": "Restaurants and bars are only open for customers seated outdoors. All restaurants and bars must close by 10PM",
+        "outdoorRestricted": true,
+        "outdoorInformation": "Outdoor gatherings up to 6 people are permitted. Masks are mandatory for outdoor gatherings."
     }
+
 ]
