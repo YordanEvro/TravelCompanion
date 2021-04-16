@@ -4,6 +4,8 @@ import ReactTooltip from "react-tooltip";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import MapChart from "../components/MapChart";
+import SideBar from "../components/Sidebar";
+import Searchbar from '../components/Searchbar';
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/styles.css';
@@ -13,6 +15,8 @@ function App() {
   const [content, setContent] = useState("");
   return (
     <div>
+      <Searchbar />
+      <SideBar />
       <MapChart setTooltipContent={setContent} />
       <ReactTooltip>{content}</ReactTooltip>
     </div>
