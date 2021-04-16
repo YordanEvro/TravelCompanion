@@ -5,7 +5,16 @@ const Country = new Schema(
     {
         name: { type: String, required: true },
         isRestricted: { type: Boolean, required: true },
-        restrictions: { type: String, required: false },
+        hasEntryRestrictions: { type: Boolean, required: true },
+        Entry: { type: String, required: false },
+        curfew: { type: Boolean, required: true },
+        curfewInformation: { type: String, required: false },
+        gymRestricted: { type: Boolean, required: true },
+        gymInformation: { type: String, required: false },
+        restaurantRestricted: { type: Boolean, required: true },
+        restaurantInformation: { type: String, required: false },
+        outdoorRestricted: { type: Boolean, required: true },
+        outdoorInformation: { type: String, required: false }
     },
     { timestamps: true },
 )

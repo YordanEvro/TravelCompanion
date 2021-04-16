@@ -76,7 +76,7 @@ const MapChart = ({ setTooltipContent }) => {
   const setFullRestrictions = (country) => {
     console.log('514country ', country);
     if(country)
-      setPopoverContent(country.name);
+      setPopoverContent(country);
     else
       setPopoverContent("No info");
     
@@ -101,9 +101,21 @@ const MapChart = ({ setTooltipContent }) => {
 
                     const hoveredCountry = countries.filter(function(country) { return country.name == NAME})[0];
                     let restrictions = "";
+                    
+                    if(hoveredCountry){
+                      
+                      if(hoveredCountry.curfew)
+                      restrictions += "— Curfew ";
 
-                    if(hoveredCountry)
-                      restrictions = "— " + hoveredCountry.restrictions; 
+                      if(hoveredCountry.hasEntryRestrictions)
+                        restrictions += "— Entry restrictions ";
+                        
+                      if(hoveredCountry.gymRestricted)
+                        restrictions += "— Gym restrictions "; 
+                        
+                      if(hoveredCountry.restaurantRestricted)
+                        restrictions += "— Restaurant restrictions "; 
+                    }
 
                     setTooltipContent(`${NAME} — ${rounded(POP_EST)} ${restrictions}`);
                   }}
@@ -117,6 +129,7 @@ const MapChart = ({ setTooltipContent }) => {
 
                     setFullRestrictions(clickedCountry);
                     handleClick(event);
+                    setTooltipContent("");
                   }}
                   style={{
                     default: {
@@ -159,38 +172,38 @@ const MapChart = ({ setTooltipContent }) => {
       >
         <div className={classes.grid}>
           <Grid>
-            <Typography className={classes.typography} >{content}</Typography>
+            <Typography className={classes.typography} >{content.name}</Typography>
             <div className={classes.list}>
               <List>
                   <ListItem>
                     <ListItemIcon>
                       <NightsStayIcon />
                     </ListItemIcon>
-                    <ListItemText>Curfew</ListItemText>
+                    <ListItemText>{content.curfew ? content.curfewInformation : "No curfew"}</ListItemText>
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
                       <FlightLandIcon />
                     </ListItemIcon>
-                    <ListItemText>Entry restriction</ListItemText>
+                    <ListItemText>{content.hasEntryRestrictions ? content.Entry : "No entry restrictions"}</ListItemText>
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
                       <NaturePeopleIcon />
                     </ListItemIcon>
-                    <ListItemText>Outdoor restriction</ListItemText>
+                    <ListItemText>{content.outdoorRestricted ? content.outdoorInformation : "No outdoor restriction"}</ListItemText>
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
                       <FitnessCenterIcon />
                     </ListItemIcon>
-                    <ListItemText>Gym restriction</ListItemText>
+                    <ListItemText>{content.gymRestricted ? content.gymInformation : "Gyms are open"}</ListItemText>
                   </ListItem>
                   <ListItem>
                     <ListItemIcon>
                       <RestaurantIcon />
                     </ListItemIcon>
-                    <ListItemText>Restaurant restriction</ListItemText>
+                    <ListItemText>{content.restaurantRestricted ? content.restaurantInformation : "Restaurants are open"}</ListItemText>
                   </ListItem>
               </List>
             </div>
