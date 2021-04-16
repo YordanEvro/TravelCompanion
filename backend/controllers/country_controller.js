@@ -46,7 +46,17 @@ updateCountry = async (req, res) => {
         }
         country.name = body.name
         country.isRestricted = body.isRestricted
-        country.restrictions = body.restrictions
+        country.hasEntryRestrictions = body.hasEntryRestrictions
+        country.Entry = body.Entry
+        country.curfew = body.curfew
+        country.curfewInformation = body.curfewInformation
+        country.gymRestricted = body.gymRestricted
+        country.gymInformation = body.gymInformation
+        country.restaurantRestricted = body.restaurantRestricted
+        country.restaurantInformation = body.restaurantInformation
+        country.outdoorRestricted = body.outdoorRestricted
+        country.outdoorInformation = body.outdoorInformation
+        
         country
             .save()
             .then(() => {

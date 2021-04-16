@@ -10,6 +10,19 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
+
+import Grid from '@material-ui/core/Grid';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import NightsStayIcon from '@material-ui/icons/NightsStay';
+import FlightLandIcon from '@material-ui/icons/FlightLand';
+import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
+import NaturePeopleIcon from '@material-ui/icons/NaturePeople';
+import RestaurantIcon from '@material-ui/icons/Restaurant';
+
 import { getAllCountries } from "../api/api";
 
 const geoUrl =
@@ -32,6 +45,12 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
+  list: {
+    backgroundColor: theme.palette.background.paper,
+  },
+  grid: {
+    flexGrow: 1,
+  }
 }));
 
 
@@ -57,7 +76,7 @@ const MapChart = ({ setTooltipContent }) => {
   const setFullRestrictions = (country) => {
     console.log('514country ', country);
     if(country)
-      setPopoverContent(country.name);
+      setPopoverContent(country);
     else
       setPopoverContent("No info");
     
@@ -82,9 +101,21 @@ const MapChart = ({ setTooltipContent }) => {
 
                     const hoveredCountry = countries.filter(function(country) { return country.name == NAME})[0];
                     let restrictions = "";
+                    
+                    if(hoveredCountry){
+                      
+                      if(hoveredCountry.curfew)
+                      restrictions += "— Curfew ";
 
-                    if(hoveredCountry)
-                      restrictions = "— " + hoveredCountry.restrictions; 
+                      if(hoveredCountry.hasEntryRestrictions)
+                        restrictions += "— Entry restrictions ";
+                        
+                      if(hoveredCountry.gymRestricted)
+                        restrictions += "— Gym restrictions "; 
+                        
+                      if(hoveredCountry.restaurantRestricted)
+                        restrictions += "— Restaurant restrictions "; 
+                    }
 
                     setTooltipContent(`${NAME} — ${rounded(POP_EST)} ${restrictions}`);
                   }}
@@ -98,6 +129,7 @@ const MapChart = ({ setTooltipContent }) => {
 
                     setFullRestrictions(clickedCountry);
                     handleClick(event);
+                    setTooltipContent("");
                   }}
                   style={{
                     default: {
@@ -105,7 +137,7 @@ const MapChart = ({ setTooltipContent }) => {
                       outline: "none"
                     },
                     hover: {
-                      fill: "#5826ba",
+                      fill: "#f55d64",
                       outline: "none"
                     },
                     pressed: {
@@ -124,7 +156,7 @@ const MapChart = ({ setTooltipContent }) => {
         open={open}
         anchorEl={anchorEl}
         anchorReference="anchorPosition"
-        anchorPosition={{top:100, left:100}}
+        anchorPosition={{top:0, left:0}}
         onClose={handleClose}
         anchorOrigin={{
           vertical: 'top',
@@ -134,8 +166,49 @@ const MapChart = ({ setTooltipContent }) => {
           vertical: 'top',
           horizontal: 'left',
         }}
+        PaperProps={{
+          style: { width: '20%', height: '80%'},
+        }}
       >
-        <Typography className={classes.typography} >{content}</Typography>
+        <div className={classes.grid}>
+          <Grid>
+            <Typography className={classes.typography} >{content.name}</Typography>
+            <div className={classes.list}>
+              <List>
+                  <ListItem>
+                    <ListItemIcon>
+                      <NightsStayIcon />
+                    </ListItemIcon>
+                    <ListItemText>{content.curfew ? content.curfewInformation : "No curfew"}</ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <FlightLandIcon />
+                    </ListItemIcon>
+                    <ListItemText>{content.hasEntryRestrictions ? content.Entry : "No entry restrictions"}</ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <NaturePeopleIcon />
+                    </ListItemIcon>
+                    <ListItemText>{content.outdoorRestricted ? content.outdoorInformation : "No outdoor restriction"}</ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <FitnessCenterIcon />
+                    </ListItemIcon>
+                    <ListItemText>{content.gymRestricted ? content.gymInformation : "Gyms are open"}</ListItemText>
+                  </ListItem>
+                  <ListItem>
+                    <ListItemIcon>
+                      <RestaurantIcon />
+                    </ListItemIcon>
+                    <ListItemText>{content.restaurantRestricted ? content.restaurantInformation : "Restaurants are open"}</ListItemText>
+                  </ListItem>
+              </List>
+            </div>
+          </Grid>
+        </div>
       </Popover>
     </>
   );
