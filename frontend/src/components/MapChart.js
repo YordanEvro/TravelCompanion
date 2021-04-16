@@ -137,7 +137,7 @@ const MapChart = ({ setTooltipContent }) => {
                       outline: "none"
                     },
                     hover: {
-                      fill: "#5826ba",
+                      fill: "#f55d64",
                       outline: "none"
                     },
                     pressed: {
