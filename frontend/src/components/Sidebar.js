@@ -3,6 +3,9 @@ import SideNav, { Toggle, Nav, NavItem, NavIcon, NavText } from '@trendmicro/rea
 // Be sure to include styles at some point, probably during your bootstraping
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 
+import PublicIcon from '@material-ui/icons/Public';
+import EmailIcon from '@material-ui/icons/Email';
+
 
 const SideBar = function () {
     return (
@@ -15,7 +18,7 @@ const SideBar = function () {
     <SideNav.Nav defaultSelected="home" >
         <NavItem eventKey="home">
             <NavIcon>
-                <i className="fa fa-fw fa-home" style={{ fontSize: '1.75em' }} />
+                <PublicIcon/>
             </NavIcon>
             <NavText>
                 Home
@@ -23,10 +26,10 @@ const SideBar = function () {
         </NavItem>
         <NavItem eventKey="charts">
             <NavIcon>
-                <i className="fa fa-fw fa-line-chart" style={{ fontSize: '1.75em' }} />
+                <EmailIcon/>
             </NavIcon>
             <NavText>
-                Test
+                Subscriptions
             </NavText>
         </NavItem>
     </SideNav.Nav>

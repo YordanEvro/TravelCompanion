@@ -9,6 +9,7 @@ import {
 import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
 
 import Grid from '@material-ui/core/Grid';
@@ -22,6 +23,7 @@ import FlightLandIcon from '@material-ui/icons/FlightLand';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import NaturePeopleIcon from '@material-ui/icons/NaturePeople';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
+import AddAlertIcon from '@material-ui/icons/AddAlert';
 
 import { getAllCountries } from "../api/api";
 
@@ -50,6 +52,12 @@ const useStyles = makeStyles((theme) => ({
   },
   grid: {
     flexGrow: 1,
+  },
+  button: {
+    margin: 20,
+    position: "absolute",
+    bottom: 0,
+    right: 0
   }
 }));
 
@@ -74,7 +82,6 @@ const MapChart = ({ setTooltipContent }) => {
   };
 
   const setFullRestrictions = (country) => {
-    console.log('514country ', country);
     if(country)
       setPopoverContent(country);
     else
@@ -105,10 +112,13 @@ const MapChart = ({ setTooltipContent }) => {
                     if(hoveredCountry){
                       
                       if(hoveredCountry.curfew)
-                      restrictions += "— Curfew ";
-
+                        restrictions += "— Curfew ";
+                      
                       if(hoveredCountry.hasEntryRestrictions)
                         restrictions += "— Entry restrictions ";
+
+                      if(hoveredCountry.outdoorRestricted)
+                        restrictions += "— Outdoor restrictions ";
                         
                       if(hoveredCountry.gymRestricted)
                         restrictions += "— Gym restrictions "; 
@@ -209,6 +219,9 @@ const MapChart = ({ setTooltipContent }) => {
             </div>
           </Grid>
         </div>
+        <Button variant="contained" color="secondary" className={classes.button} size="small" startIcon={<AddAlertIcon/>}>
+          Subscribe
+        </Button>
       </Popover>
     </>
   );
