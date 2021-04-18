@@ -1,5 +1,5 @@
 # TravelCompanion
-A MERN stack application that displays Covid-19 restrictions for countries.
+A MERN stack application that displays Covid-19 restrictions for countries. The only supported countries are the ones currently part of G7.
 
 ## Installation
 This porject has multiple dependencies. Follow the following installation steps to run the application.
@@ -55,10 +55,7 @@ This should open the `mongo` shell. Then you can create a database called Travel
 ```bash
 use TravelCompanion
 ````
-You can now run `exit` to exit the shell. Note that if you want to use another name for the database, you must also locally change the file `backend/config/db.js`. Now execute the following command to start Mongo Daemon and let the command-line running while you are developing or using the application.
-```bash
-mongod
-````
+You can now run `exit` to exit the shell. Note that if you want to use another name for the database, you must also locally change the file `backend/config/db.js`.
 
 ## Running the code
 Open a new command-line and go to the `TravelCompanion` directory. To run both the frontend and the backend, execute the following command:
