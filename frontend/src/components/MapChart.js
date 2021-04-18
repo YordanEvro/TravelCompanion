@@ -69,9 +69,11 @@ const MapChart = ({ setTooltipContent }) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [content, setPopoverContent] = useState("");
 
-  getAllCountries().then(res => {
-    setCountries(res.data.data);
-  })
+  if(countries.length < 1){
+    getAllCountries().then(res => {
+      setCountries(res.data.data);
+    })
+  }
   
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
