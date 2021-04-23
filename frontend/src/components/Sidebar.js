@@ -13,6 +13,7 @@ const SideBar = function () {
     onSelect={(selected) => {
         // Add your code here
     }}
+    style={{background:"Green"}}
 >
     <SideNav.Toggle />
     <SideNav.Nav defaultSelected="home" >
