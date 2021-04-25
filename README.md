@@ -1,5 +1,8 @@
 # TravelCompanion
 A MERN stack application that displays Covid-19 restrictions for countries. The only supported countries are the ones currently part of G7.
+<p align="center">
+  <img width="600" height="400" src="https://user-images.githubusercontent.com/48580919/115976260-17bed280-a53a-11eb-84dd-563c3208923b.png">
+</p>
 
 ## Installation
 This porject has multiple dependencies. Follow the following installation steps to run the application.
